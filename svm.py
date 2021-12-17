@@ -15,7 +15,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.express as px
 
-"""**Base de Dados Imóveis**
+"""**Base de Dados Imóveis**"""
+"""**Property Database**"""
 
 [Fonte](https:/https://www.kaggle.com/arslanali4343/real-estate-dataset)
 """
@@ -32,11 +33,13 @@ base_imoveis.describe()
 np.unique(base_imoveis['MEDV'], return_counts=True)
 
 """**Visualização dos dados**"""
+"""**Data visualization**"""
 
 grafico = px.scatter_matrix(base_imoveis, dimensions=['RM', 'ZN', 'CRIM'], color = 'MEDV')
 grafico.show()
 
 """**Divisão entra previsores e Classe**"""
+"""**Division between Predictors and Class**"""
 
 x_imove = base_imoveis.iloc[:,1:5 ].values
 
@@ -47,6 +50,7 @@ y_imove = base_imoveis.iloc[:, 3]
 y_imove
 
 """**Escalonamento dos Valores**"""
+"""**Scaling of Values**"""
 
 x_imove
 
@@ -65,6 +69,7 @@ x_imove[:,0].max(), x_imove[:,1].max(), x_imove[:,2].max()
 x_imove
 
 """**Divisão das bases em treinamento e teste**"""
+"""**Division of bases in training and testing**"""
 
 from sklearn.model_selection import train_test_split
 
@@ -77,13 +82,15 @@ y_imove_treinamento
 x_imove_teste.shape, y_imove_teste.shape
 
 """**Salvandos as variáveis**"""
+"""**Saving the variables**"""
 
 import pickle
 
 with open('Imoveiss.pkl', mode = 'wb') as f:
   pickle.dump([x_imove_treinamento, y_imove_treinamento, x_imove_teste, y_imove_teste], f)
 
-"""**Algoritmo SVM**"""
+"""**Algoritmo SVM (Máquina de vetores de suporte)**"""
+"""**SVM Algorithm (Support vector machine)**"""
 
 from sklearn.svm import SVC
 
